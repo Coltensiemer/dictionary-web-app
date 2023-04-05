@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
-import './App.css'
+import Search from './components/Search'
+import './styles/App.css'
 
 function App() {
   
 
   return (
-    <div className="bg-red-500">
+    <div className="flex flex-col justify-center">
       <Navbar />
+      <Search />
       <h1>Hello</h1>
   
     </div>
