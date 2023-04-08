@@ -7,10 +7,10 @@ function App() {
   
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center mx-6">
       <Navbar />
       <Search />
-      <h1>Hello</h1>
+      <h1></h1>
   
     </div>
   )
