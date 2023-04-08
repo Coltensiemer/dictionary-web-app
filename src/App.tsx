@@ -10,7 +10,6 @@ function App() {
     <div className="flex flex-col justify-center mx-6">
       <Navbar />
       <Search />
-      <h1></h1>
   
     </div>
   )

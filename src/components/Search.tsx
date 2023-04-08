@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
 
 export default function Searchbar() {
+  interface WordData {
+    id: number;
+    word: string;
+    phonetic: string;
+    meanings: {
+      id: number;
+      partOfSpeech: string;
+      definitions: { id: number; definition: string }[];
+    }[];
+  }
+
   const [isLoaded, setLoaded] = useState(false);
-  const [isWord, setItems] = useState<{id: number; word: string}[]>([]);
+  const [isData, setData] = useState<WordData[]>([]);
 
   useEffect(() => {
-    fetch("https://api.dictionaryapi.dev/api/v2/entries/en/world")
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          setLoaded(true);
-          setItems(data);
-        
-        },
-        (error) => {
-          setLoaded(true);
-          console.log("there was an error");
-        }
+    async function loadData() {
+      const response = await fetch(
+        "https://api.dictionaryapi.dev/api/v2/entries/en/keyboard"
       );
+      const data = await response.json();
+      setData(data);
+
+      console.log(data);
+    }
+
+    loadData();
   }, []);
 
   return (
@@ -27,13 +36,29 @@ export default function Searchbar() {
         placeholder="Type here"
         className="input w-full max-w-xs"
       />
-	  <ul>
-		{isWord.map(word => ( 
-			<li key={word.id}> 
-			{word.word}
-			</li>
-		))}
-	  </ul>
+    <ul>
+  {isData.map((data) => (
+    <li key={data.id}>
+      <h2>{data.word}</h2>
+      <h3>{data.phonetic}</h3>
+      <ul>
+        {data.meanings.map((meaning) => (
+          <li key={meaning.id}>
+            <h3>{meaning.partOfSpeech}</h3>
+            <ul>
+				<h3>Meaning</h3>
+              {meaning.definitions.map((definition) => (
+                <ul key={definition.id}>
+                  <li>{definition.definition}</li>
+                </ul>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </li>
+  ))}
+</ul>
     </div>
   );
 }

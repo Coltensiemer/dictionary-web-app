@@ -33,7 +33,6 @@ export default function Navbar() {
     <div className="flex justify-between my-6">
       <img src={Logo} />
       <Font />
-      
     </div>
   );
 }
