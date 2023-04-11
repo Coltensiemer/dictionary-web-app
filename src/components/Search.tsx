@@ -43,7 +43,7 @@ interface WordData {
 
   return (
     <div>
-      <div className="flex">
+      <div className="pb-10">
         <form onSubmit={submitWord}>
           <input
             type="text"
@@ -52,8 +52,8 @@ interface WordData {
             onChange={(e) => setWord(e.target.value)}
             // value={isData}
           />
-          <button type="submit">
-            <img src={SearchSvg} className="absolute  right-10 top-[100px]" />
+          <button type="submit" className="">
+            <img src={SearchSvg} className="absolute right-10 top-[100px]" />
           </button>
         </form>
       </div>
