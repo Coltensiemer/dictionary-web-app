@@ -958,7 +958,19 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz"
   "version" "0.14.0"
 
-"react@^18.2.0":
+"react-use-uuid@^2.0.1":
+  "integrity" "sha512-tXMVDPYULiuL4bfCNYIbXpm1Gjt3oav9vPBxlc+J9fNvHjfxQqGqx+1CB63ykimmap4MUbxO7TipWYnhCBrOEg=="
+  "resolved" "https://registry.npmjs.org/react-use-uuid/-/react-use-uuid-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "uuid" "^3.3.3"
+
+"react-uuid@^2.0.0":
+  "integrity" "sha512-FNUH/8WR/FEtx0Bu6gmt1eONfc413hhvrEXFWUSFGvznUhI4dYoVZA09p7JHoTpnM4WC2D/bG2YSxGKXF4oVLg=="
+  "resolved" "https://registry.npmjs.org/react-uuid/-/react-uuid-2.0.0.tgz"
+  "version" "2.0.0"
+
+"react@^18.2.0", "react@>= 16.8.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
@@ -1133,6 +1145,11 @@
   "integrity" "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="
   "resolved" "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
   "version" "1.0.2"
+
+"uuid@^3.3.3":
+  "integrity" "sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A=="
+  "resolved" "https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz"
+  "version" "3.4.0"
 
 "vite@^4.1.0-beta.0", "vite@^4.2.0":
   "integrity" "sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg=="
