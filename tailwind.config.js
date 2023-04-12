@@ -10,6 +10,7 @@ export default {
         'purple-primary': '#A445ED',
         'red-primary': '#FF5252',
         'grey-primary': '#757575',
+        'grey-medium': '#E9E9E9',
         'grey-light':'#f4f4f4',
         'grey-2d': '#2d2d2d'
       }, 

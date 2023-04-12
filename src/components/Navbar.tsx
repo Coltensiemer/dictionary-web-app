@@ -5,24 +5,21 @@ import DownArrow from "../assets/images/icon-arrow-down.svg";
 
 // the light and dark mode toggle switch
 export function LightDarkToggle() {
-
-
-let checked: boolean = false; 
-
   return (
-    <>
-      <input type="checkbox" className="toggle "  />
-      <img src={Moon} />
-    </>
+    <div className="flex gap-2">
+      <input type="checkbox" className="toggle"  />
+      <img className="relative bottom-1" src={Moon} />
+    </div>
   );
 }
 
 // Fonts - will control drop downs
 export function Font() {
   return (
-    <div className="flex justify-around w-24">
+    <div className="flex justify-around gap-4">
       <p>Serif</p>
-      <img src={DownArrow} className="h-2" />
+      <img src={DownArrow} className="h-2 relative top-2" />
+      <div className="text-grey-medium">|</div>
       <LightDarkToggle />
     </div>
   );
@@ -31,7 +28,7 @@ export function Font() {
 export default function Navbar() {
   return (
     <div className="flex justify-between my-6">
-      <img src={Logo} />
+      <img className="h-8 w-8" src={Logo} />
       <Font />
     </div>
   );
