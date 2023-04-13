@@ -14,7 +14,7 @@ This is a solution to the [Dictionary web app challenge on Frontend Mentor](http
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
+
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -44,7 +44,7 @@ Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to t
 
 Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+
 
 ### Links
 
@@ -53,18 +53,16 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ## My process
 
+I wanted to create this project using Typescript with React. This would be my first time using Typescript. I also had another challenge: no video tutorials. Only Docs, MDN web docs, blogs, and ChatGPT if I really was stuck. I wanted to diver deeper in the Typescript's and React's docs so I get a deeper understanding. I think it is important for any developer to really understand languages and libraries well. 
+
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- Typescript
+- React 
+- TailWindCSS 
+- DaisyUI 
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+
 
 ### What I learned
 
@@ -92,16 +90,25 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 
 ### Continued development
 
+- API Fetchs/ Error Handling: 
+
+- useEffect 
+
+- Speach Synthesis
+
+
+
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
 **Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [TypeScript Handbook](https://www.typescriptlang.org/) - For my first time using typescript. Understanding annotations was a challenge when defining my types for functions. Also the use of interface delcation for object types for when passing in the dictonary APIs. 
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [MDN Web Docs: Speach Synthesis Utterance ](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance) - To complete a speech request so clients can hear the word, I had to understand Speech Synthesis more.  
+
+- [React Docs](https://react.dev/)
 
 ## Author
 
@@ -111,8 +118,3 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 **Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
