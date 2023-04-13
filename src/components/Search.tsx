@@ -20,9 +20,9 @@ export default function Searchbar() {
   }
 
   // Use useState hook to manage state
+  const [isSpeaking, setSpeaking] = useState<boolean>(false);
   const [isNotFound, setNotFound] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
-  const [isLoaded, setLoaded] = useState(false);
   const [isData, setData] = useState<WordData[]>([]);
   const [isWord, setWord] = useState("");
 
@@ -66,12 +66,20 @@ export default function Searchbar() {
     return response;
   }
 
-console.log(isData)
+  // Define a function called `handleSpeak` that takes a single string argument
+  const handleSpeak = (e: string) => {
+    // Create a new `SpeechSynthesisUtterance` object using the string argument
+    const speaking = new SpeechSynthesisUtterance(e);
+    // Start the speech synthesis process using the `speak` method of the `speechSynthesis` object
+    speechSynthesis.speak(speaking);
+  };
+
+  console.log(isData);
 
   return (
     <div>
       <div className="pb-10">
-        <form onSubmit= {submitWord}>
+        <form onSubmit={submitWord}>
           <input
             type="text"
             placeholder="Search for any Word"
@@ -87,7 +95,7 @@ console.log(isData)
           <p className="text-red-primary">Whoops, can't be empty</p>
         )}
       </div>
-      {isNotFound === true ? ( // Renders No Definitions 
+      {isNotFound === true ? ( // Renders No Definitions
         <div className="flex flex-col justify-center">
           <h2 className="self-center text-6xl h-auto">🙁</h2>
           <p className="self-center">No Definitions Found</p>
@@ -97,13 +105,23 @@ console.log(isData)
             the web instead.
           </p>
         </div>
-      ) : ( /// If there is a defination 
+      ) : (
+        /// If there is a defination
         <ul>
           {isData.map((data) => (
             <li key={uuid()}>
               <div className="flex justify-between">
-                <h2 className="text-3xl md:text-6xl capitalize font-bold">{data.word}</h2>
-                <img className="w-14" src={PlayIcon} />
+                <h2 className="text-3xl md:text-6xl capitalize font-bold">
+                  {data.word}
+                </h2>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleSpeak(isWord);
+                  }}
+                >
+                  <img className="w-14 cursor-pointer" src={PlayIcon} />
+                </button>
               </div>
               <p className="text-2x relative bottom-6 tracking-widest text-purple-primary pt-2 ">
                 {data.phonetic}
