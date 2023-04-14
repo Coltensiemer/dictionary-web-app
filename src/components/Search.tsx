@@ -20,7 +20,6 @@ export default function Searchbar() {
   }
 
   // Use useState hook to manage state
-  const [isSpeaking, setSpeaking] = useState<boolean>(false);
   const [isNotFound, setNotFound] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
   const [isData, setData] = useState<WordData[]>([]);
@@ -66,7 +65,7 @@ export default function Searchbar() {
     return response;
   }
 
-  // Define a function called `handleSpeak` that takes a single string argument
+  // Handles the Speech Utterance 
   const handleSpeak = (e: string) => {
     // Create a new `SpeechSynthesisUtterance` object using the string argument
     const speaking = new SpeechSynthesisUtterance(e);
@@ -74,7 +73,7 @@ export default function Searchbar() {
     speechSynthesis.speak(speaking);
   };
 
-  console.log(isData);
+
 
   return (
     <div>
@@ -95,7 +94,7 @@ export default function Searchbar() {
           <p className="text-red-primary">Whoops, can't be empty</p>
         )}
       </div>
-      {isNotFound === true ? ( // Renders No Definitions
+      {isNotFound === true && isWord != "" ? ( // Renders No Definitions
         <div className="flex flex-col justify-center">
           <h2 className="self-center text-6xl h-auto">🙁</h2>
           <p className="self-center">No Definitions Found</p>
@@ -120,7 +119,7 @@ export default function Searchbar() {
                     handleSpeak(isWord);
                   }}
                 >
-                  <img className="w-14 cursor-pointer" src={PlayIcon} />
+                  <img className="w-14 cursor-pointer" src={PlayIcon} alt="Play Speech" />
                 </button>
               </div>
               <p className="text-2x relative bottom-6 tracking-widest text-purple-primary pt-2 ">
