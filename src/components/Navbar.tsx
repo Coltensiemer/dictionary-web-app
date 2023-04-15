@@ -58,7 +58,7 @@ export default function Navbar(props: Props) {
   function LightDarkToggle() {
     return (
       <div className="flex gap-2">
-        <input type="checkbox" className="toggle"
+        <input type="checkbox" className="toggle dark:bg-purple-primary"
         checked={props.darkModeTheme}
         onChange={handleInputChange} />
         <img className="relative bottom-1" src={Moon} />
@@ -86,7 +86,7 @@ export default function Navbar(props: Props) {
   }
 
   return (
-    <div className="flex justify-between py-6 px-6 dark:bg-black-primary ">
+    <div className="flex justify-between py-6 px-6 md:px-10 lg:px-80 dark:bg-black-primary ">
       <img src={Logo} className="h-8 w-8"  />
       <Font />
     </div>

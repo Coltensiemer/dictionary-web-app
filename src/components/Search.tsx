@@ -65,15 +65,13 @@ export default function Searchbar() {
     return response;
   }
 
-  // Handles the Speech Utterance 
+  // Handles the Speech Utterance
   const handleSpeak = (e: string) => {
     // Create a new `SpeechSynthesisUtterance` object using the string argument
     const speaking = new SpeechSynthesisUtterance(e);
     // Start the speech synthesis process using the `speak` method of the `speechSynthesis` object
     speechSynthesis.speak(speaking);
   };
-
-
 
   return (
     <div className="dark:bg-black-primary dark:text-white h-screen p-6 md:px-10 lg:px-80 overflow-y-auto">
@@ -86,7 +84,7 @@ export default function Searchbar() {
             onChange={(e) => setWord(e.target.value)}
             // value={isData}
           />
-          <button type="submit" className="">
+          <button type="submit">
             <img src={SearchSvg} className="absolute z-10 right-4 top-4" />
           </button>
         </form>
@@ -95,10 +93,10 @@ export default function Searchbar() {
         )}
       </div>
       {isNotFound === true && isWord != "" ? ( // Renders No Definitions
-        <div className="flex flex-col justify-center">
-          <h2 className="self-center text-6xl h-auto">🙁</h2>
-          <p className="self-center">No Definitions Found</p>
-          <p className="self-center text-center">
+        <div className="flex flex-col justify-center pt-32 dark:bg-black-primary">
+          <h2 className="self-center text-6xl h-auto pb-11">🙁</h2>
+          <p className="self-center font-bold pb-6 lg:text-lg dark:text-white" >No Definitions Found</p>
+          <p className="self-center text-center text-grey-primary lg:text-lg">
             Sorry Pal, We couldn't find definitions for the word you were
             looking for. You can try the search again at later time or gead to
             the web instead.
@@ -119,7 +117,11 @@ export default function Searchbar() {
                     handleSpeak(isWord);
                   }}
                 >
-                  <img className="w-14 cursor-pointer" src={PlayIcon} alt="Play Speech" />
+                  <img
+                    className="w-14 cursor-pointer"
+                    src={PlayIcon}
+                    alt="Play Speech"
+                  />
                 </button>
               </div>
               <p className="text-2x lg:text-2xl relative bottom-6 md:bottom-0 tracking-widest text-purple-primary pt-2 ">
@@ -133,7 +135,9 @@ export default function Searchbar() {
                       {meaning.partOfSpeech}
                     </h3>
                     <ul className="marker:text-purple-primary">
-                      <h3 className="pb-4 text-grey-primary  md:text-lg">Meaning</h3>
+                      <h3 className="pb-4 text-grey-primary  md:text-lg">
+                        Meaning
+                      </h3>
                       {meaning.definitions.map((definition) => (
                         <ul
                           className="list-disc  mx-6 md:mx-10  md:text-lg py-3"
@@ -148,7 +152,9 @@ export default function Searchbar() {
                         )}
                         {meaning.synonyms.map((sym) => (
                           <ul key={uuid()}>
-                            <li className="text-purple-primary font-bold">{sym}</li>
+                            <li className="text-purple-primary font-bold">
+                              {sym}
+                            </li>
                           </ul>
                         ))}
                       </div>
