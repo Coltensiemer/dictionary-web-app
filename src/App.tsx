@@ -15,10 +15,6 @@ function App() {
 
   }
 
-  console.log(isDarkModeTheme)
-  console.log(darkModeHandle)
-
-
   // Handle DOM for font familys
   function handleFontFamily(select: string) {
     setFontFamily(select);
@@ -26,7 +22,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col justify-center mx-6">
+    <div className="flex flex-col justify-center  dark:bg-red-500">
       <div className={darkModeHandle}>
       <Navbar 
       handleFontFamily={handleFontFamily} 

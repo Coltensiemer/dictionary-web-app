@@ -13,7 +13,9 @@ export default {
         'grey-primary': '#757575',
         'grey-medium': '#E9E9E9',
         'grey-light':'#f4f4f4',
-        'grey-2d': '#2d2d2d'
+        'grey-2d': '#2d2d2d',
+        'black-primary': '#050505',
+        'black-secondary': '#1F1F1F'
       }, 
     },
   },

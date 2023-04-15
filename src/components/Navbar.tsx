@@ -26,7 +26,7 @@ export default function Navbar(props: Props) {
   function DropDown() {
   
     return (
-      <div className="absolute z-10 mt-8 p-6  bg-white shadow-xl transition ease-in-out duration-700 ">
+      <div className="absolute z-10 mt-8 p-6  bg-white dark:bg-black-primary dark:text-white shadow-xl dark:shadow-purple-primary transition ease-in-out duration-700 ">
         <ol className=" self-start flex flex-col gap-2">
           <li
             onClick={() => props.handleFontFamily("sans-serif")}
@@ -72,7 +72,7 @@ export default function Navbar(props: Props) {
       <div className="flex justify-around gap-4">
         <div className="w-32 flex flex-col">
           <div className="flex self-end gap-1">
-            <p className="capitalize">{props.isFontFamily}</p>
+            <p className="capitalize dark:text-white">{props.isFontFamily}</p>
             <button onClick={() => setOpen(!isOpen)}>
               <img src={DownArrow} className="h-2 relative" />
             </button>
@@ -86,7 +86,7 @@ export default function Navbar(props: Props) {
   }
 
   return (
-    <div className="flex justify-between my-6 dark:bg-red-500 ">
+    <div className="flex justify-between py-6 px-6 dark:bg-black-primary ">
       <img src={Logo} className="h-8 w-8"  />
       <Font />
     </div>

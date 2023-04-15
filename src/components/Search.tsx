@@ -76,18 +76,18 @@ export default function Searchbar() {
 
 
   return (
-    <div>
-      <div className="pb-10">
-        <form onSubmit={submitWord}>
+    <div className="dark:bg-black-primary dark:text-white h-screen p-6 md:px-10 lg:px-80 overflow-y-auto">
+      <div className="pb-10 ">
+        <form onSubmit={submitWord} className="relative">
           <input
             type="text"
             placeholder="Search for any Word"
-            className=" relative input w-full bg-grey-light text:grey-2d outline-none border-2 border-transparent active:border-purple-primary  round-md"
+            className=" relative input w-full bg-grey-light dark:bg-black-secondary dark:text-white text:grey-2d outline-none border-2 border-transparent active:border-purple-primary  round-md"
             onChange={(e) => setWord(e.target.value)}
             // value={isData}
           />
           <button type="submit" className="">
-            <img src={SearchSvg} className="absolute right-10 top-[100px]" />
+            <img src={SearchSvg} className="absolute z-10 right-4 top-4" />
           </button>
         </form>
         {isError == true && (
@@ -106,7 +106,7 @@ export default function Searchbar() {
         </div>
       ) : (
         /// If there is a defination
-        <ul>
+        <ul className="overflow-hidden">
           {isData.map((data) => (
             <li key={uuid()}>
               <div className="flex justify-between">
@@ -122,33 +122,33 @@ export default function Searchbar() {
                   <img className="w-14 cursor-pointer" src={PlayIcon} alt="Play Speech" />
                 </button>
               </div>
-              <p className="text-2x relative bottom-6 tracking-widest text-purple-primary pt-2 ">
+              <p className="text-2x lg:text-2xl relative bottom-6 md:bottom-0 tracking-widest text-purple-primary pt-2 ">
                 {data.phonetic}
               </p>
 
               <ul>
                 {data.meanings.map((meaning) => (
                   <li key={uuid()}>
-                    <h3 className="text-xl font-bold  italic ">
+                    <h3 className=" md:text-lg  font-bold  italic py-6 ">
                       {meaning.partOfSpeech}
                     </h3>
                     <ul className="marker:text-purple-primary">
-                      <h3 className="pb-4 text-grey-primary">Meaning</h3>
+                      <h3 className="pb-4 text-grey-primary  md:text-lg">Meaning</h3>
                       {meaning.definitions.map((definition) => (
                         <ul
-                          className="list-disc  mx-6 md:mx-10 py-3"
+                          className="list-disc  mx-6 md:mx-10  md:text-lg py-3"
                           key={definition.definition}
                         >
                           <li>{definition.definition}</li>
                         </ul>
                       ))}
-                      <div className="flex ">
+                      <div className=" pt-6 grid grid-cols-3 gap-4">
                         {meaning.synonyms.length >= 1 && (
-                          <h4 className="pr-6 text-grey-primary">Synonyms</h4>
+                          <h4 className=" text-grey-primary ">Synonyms</h4>
                         )}
                         {meaning.synonyms.map((sym) => (
                           <ul key={uuid()}>
-                            <li className="text-purple-primary">{sym}</li>
+                            <li className="text-purple-primary font-bold">{sym}</li>
                           </ul>
                         ))}
                       </div>
