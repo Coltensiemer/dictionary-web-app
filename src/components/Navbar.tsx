@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, } from "react";
 import  Logo from "../assets/images/logo.svg";
-import Moon from "../assets/images/icon-moon.svg";
+// @ts-ignore
+import { ReactComponent as Moon }  from "../assets/images/icon-moon.svg";
 import DownArrow  from "../assets/images/icon-arrow-down.svg";
 
 interface Props { 
@@ -12,6 +13,8 @@ interface Props {
 
 export default function Navbar(props: Props) {
   const [isOpen, setOpen] = useState<boolean>(false);
+
+  
 
     /**
    * Toggles the value of the `isToggle` state variable and calls the
@@ -61,7 +64,9 @@ export default function Navbar(props: Props) {
         <input type="checkbox" className="toggle dark:bg-purple-primary"
         checked={props.darkModeTheme}
         onChange={handleInputChange} />
-        <img className="relative bottom-1" src={Moon} />
+        {/* <img className="relative bottom-1" src={Moon} /> */}
+
+      <Moon className="stroke-grey-primary fill-none dark:stroke-purple-primary" /> 
       </div>
     );
   }

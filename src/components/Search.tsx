@@ -22,8 +22,11 @@ export default function Searchbar() {
   // Use useState hook to manage state
   const [isNotFound, setNotFound] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
+  const [isActive, setActive] = useState<boolean>(false); 
   const [isData, setData] = useState<WordData[]>([]);
   const [isWord, setWord] = useState("");
+
+
 
   // This function handles the form submission
   const submitWord: React.FormEventHandler<HTMLFormElement> = async (event) => {
@@ -32,6 +35,8 @@ export default function Searchbar() {
     // Check if the word is empty and set the error state accordingly
     if (isWord === "") {
       setError(true);
+      setTimeout(() => setError(false), 300)
+      setActive(false)
     } else if (isWord !== "") {
       // Check if the word is not empty and has more than 1 character
       try {
@@ -43,6 +48,8 @@ export default function Searchbar() {
         // Convert the response to JSON and update the data state with the fetched data
         const data = await response.json();
         setData(data);
+        setActive(true)
+        setTimeout(() => setActive(false), 300) 
 
         // Set the error state to false to render the definition component
         setError(false);
@@ -50,6 +57,8 @@ export default function Searchbar() {
       } catch (error) {
         // Catch errors that occur during the API request
         console.log("error", error);
+        setError(true)
+        setTimeout(() => setError(false), 3000)
       }
     }
   };
@@ -73,6 +82,9 @@ export default function Searchbar() {
     speechSynthesis.speak(speaking);
   };
 
+  // const handleRedError = isError ? null : 
+  console.log(isError)
+
   return (
     <div className="dark:bg-black-primary dark:text-white h-screen p-6 md:px-10 lg:px-80 overflow-y-auto">
       <div className="pb-10 ">
@@ -80,7 +92,7 @@ export default function Searchbar() {
           <input
             type="text"
             placeholder="Search for any Word"
-            className=" relative input w-full bg-grey-light dark:bg-black-secondary dark:text-white text:grey-2d outline-none border-2 border-transparent active:border-purple-primary  round-md"
+            className={`${isError ?  "border-red-primary" : null } ${isActive ? "border-purple-primary" : null} relative input w-full bg-grey-light dark:bg-black-secondary dark:text-white text:grey-2d outline-none border-2 border-transparent round-md`} 
             onChange={(e) => setWord(e.target.value)}
             // value={isData}
           />
