@@ -3,6 +3,7 @@ import uuid from "react-uuid";
 
 import PlayIcon from "../assets/images/icon-play.svg";
 import SearchSvg from "../assets/images/icon-search.svg";
+import SearchStorage from "./SearchStorage";
 
 export default function Searchbar() {
   // Define the interface for WordData
@@ -22,11 +23,15 @@ export default function Searchbar() {
   // Use useState hook to manage state
   const [isNotFound, setNotFound] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
-  const [isActive, setActive] = useState<boolean>(false); 
+  const [isActive, setActive] = useState<boolean>(false);
   const [isData, setData] = useState<WordData[]>([]);
   const [isWord, setWord] = useState("");
 
+  const [isStorage, setStorage] = useState<string[]>([])
 
+  function handleStorage() { 
+    setStorage(prev => [isWord,...prev])
+  }
 
   // This function handles the form submission
   const submitWord: React.FormEventHandler<HTMLFormElement> = async (event) => {
@@ -35,8 +40,8 @@ export default function Searchbar() {
     // Check if the word is empty and set the error state accordingly
     if (isWord === "") {
       setError(true);
-      setTimeout(() => setError(false), 300)
-      setActive(false)
+      setTimeout(() => setError(false), 300);
+      setActive(false);
     } else if (isWord !== "") {
       // Check if the word is not empty and has more than 1 character
       try {
@@ -48,8 +53,11 @@ export default function Searchbar() {
         // Convert the response to JSON and update the data state with the fetched data
         const data = await response.json();
         setData(data);
-        setActive(true)
-        setTimeout(() => setActive(false), 300) 
+
+        handleStorage()
+
+        setActive(true);
+        setTimeout(() => setActive(false), 300);
 
         // Set the error state to false to render the definition component
         setError(false);
@@ -57,8 +65,8 @@ export default function Searchbar() {
       } catch (error) {
         // Catch errors that occur during the API request
         console.log("error", error);
-        setError(true)
-        setTimeout(() => setError(false), 3000)
+        setError(true);
+        setTimeout(() => setError(false), 3000);
       }
     }
   };
@@ -82,8 +90,9 @@ export default function Searchbar() {
     speechSynthesis.speak(speaking);
   };
 
-  // const handleRedError = isError ? null : 
-  console.log(isError)
+  // const handleRedError = isError ? null :
+
+  console.log(isStorage);
 
   return (
     <div className="dark:bg-black-primary dark:text-white h-screen p-6 md:px-10 lg:px-80 overflow-y-auto">
@@ -92,7 +101,9 @@ export default function Searchbar() {
           <input
             type="text"
             placeholder="Search for any Word"
-            className={`${isError ?  "border-red-primary" : null } ${isActive ? "border-purple-primary" : null} relative input w-full bg-grey-light dark:bg-black-secondary dark:text-white text:grey-2d outline-none border-2 border-transparent round-md`} 
+            className={`${isError ? "border-red-primary" : null} ${
+              isActive ? "border-purple-primary" : null
+            } relative input w-full bg-grey-light dark:bg-black-secondary dark:text-white text:grey-2d outline-none border-2 border-transparent round-md`}
             onChange={(e) => setWord(e.target.value)}
             // value={isData}
           />
@@ -103,11 +114,14 @@ export default function Searchbar() {
         {isError == true && (
           <p className="text-red-primary">Whoops, can't be empty</p>
         )}
+        <SearchStorage isStorage={isStorage}/>
       </div>
       {isNotFound === true && isWord != "" ? ( // Renders No Definitions
         <div className="flex flex-col justify-center pt-32 dark:bg-black-primary">
           <h2 className="self-center text-6xl h-auto pb-11">🙁</h2>
-          <p className="self-center font-bold pb-6 lg:text-lg dark:text-white" >No Definitions Found</p>
+          <p className="self-center font-bold pb-6 lg:text-lg dark:text-white">
+            No Definitions Found
+          </p>
           <p className="self-center text-center text-grey-primary lg:text-lg">
             Sorry Pal, We couldn't find definitions for the word you were
             looking for. You can try the search again at later time or gead to
