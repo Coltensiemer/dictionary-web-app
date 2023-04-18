@@ -2,7 +2,8 @@ import { useEffect, useState, } from "react";
 import  Logo from "../assets/images/logo.svg";
 // @ts-ignore
 import { ReactComponent as Moon }  from "../assets/images/icon-moon.svg";
-import DownArrow  from "../assets/images/icon-arrow-down.svg";
+// @ts-ignore
+import {ReactComponent as DownArrow }  from "../assets/images/icon-arrow-down.svg";
 
 interface Props { 
   handleFontFamily: (select: string) => void
@@ -29,7 +30,7 @@ export default function Navbar(props: Props) {
   function DropDown() {
   
     return (
-      <div className="absolute z-10 mt-8 p-6  bg-white dark:bg-black-primary dark:text-white shadow-xl dark:shadow-purple-primary transition ease-in-out duration-700 ">
+      <div  className="absolute z-10 mt-8 p-6  bg-white dark:bg-black-primary dark:text-white shadow-xl dark:shadow-purple-primary transition ease-in-out duration-700 ">
         <ol className=" self-start flex flex-col gap-2">
           <li
             onClick={() => props.handleFontFamily("sans-serif")}
@@ -61,7 +62,7 @@ export default function Navbar(props: Props) {
   function LightDarkToggle() {
     return (
       <div className="flex gap-2">
-        <input type="checkbox" className="toggle dark:bg-purple-primary"
+        <input aria-label="Dark Mode toggle" type="checkbox" className="toggle dark:bg-purple-primary"
         checked={props.darkModeTheme}
         onChange={handleInputChange} />
         {/* <img className="relative bottom-1" src={Moon} /> */}
@@ -76,10 +77,10 @@ export default function Navbar(props: Props) {
     return (
       <div className="flex justify-around gap-4">
         <div className="w-32 flex flex-col">
-          <div className="flex self-end gap-1">
+          <div className="flex self-end gap-2">
             <p className="capitalize dark:text-white">{props.isFontFamily}</p>
-            <button onClick={() => setOpen(!isOpen)}>
-              <img src={DownArrow} className="h-2 relative" />
+            <button aria-label="Font DropDown" onClick={() => setOpen(!isOpen)}>
+              <DownArrow aria-hidden="true" className="h-4 w-4 fill-purple-primary" />
             </button>
           </div>
           {isOpen && <DropDown />}
@@ -92,7 +93,7 @@ export default function Navbar(props: Props) {
 
   return (
     <div className="flex justify-between py-6 px-6 md:px-10 lg:px-80 dark:bg-black-primary ">
-      <img src={Logo} className="h-8 w-8"  />
+      <img alt="" src={Logo} className="h-8 w-8"  />
       <Font />
     </div>
   );

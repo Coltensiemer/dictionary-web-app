@@ -30,9 +30,8 @@ export default function SearchStorage(props: Props) {
 		{props.isStorage.length >= 1 &&<p className="text-sm mt-2 text-grey-primary">Recents:</p> } 
       <ol className="flex justify center gap-2 text-sm text-grey-primary">
         {props.isStorage.map((item, index) => (
-			<div key={index} className=" flex justify-around gap-2 border-2 px-2 mt-2 border-grey-primary hover:border-2 hover:border-red-primary">
+			<div key={index} className=" flex justify-around gap-2 border-2 px-2 mt-2 border-grey-primary hover:border-2 hover:border-purple-primary">
           <li  className="">{item}</li>
-		  <button className="w-2 h-2 relative bg-primary-red border-red-500 border-2 left-2"></button>
 		  </div>
         ))}
       </ol>

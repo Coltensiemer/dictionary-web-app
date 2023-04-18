@@ -117,8 +117,8 @@ export default function Searchbar() {
             onChange={(e) => setWord(e.target.value)}
             // value={isData}
           />
-          <button type="submit">
-            <img src={SearchSvg} className="absolute z-10 right-4 top-4" />
+          <button aria-label="Search Word"type="submit">
+            <img aria-hidden="true" src={SearchSvg} className="absolute z-10 right-4 top-4" />
           </button>
         </form>
         {isError == true && (
@@ -149,6 +149,7 @@ export default function Searchbar() {
                 </h2>
                 <button
                   type="button"
+                  aria-label="Play Speech"
                   onClick={() => {
                     handleSpeak(isWord);
                   }}
@@ -156,7 +157,7 @@ export default function Searchbar() {
                   <img
                     className="w-14 cursor-pointer"
                     src={PlayIcon}
-                    alt="Play Speech"
+                    aria-hidden="true"
                   />
                 </button>
               </div>
