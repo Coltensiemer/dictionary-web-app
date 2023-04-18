@@ -27,7 +27,21 @@ export default function Searchbar() {
   const [isData, setData] = useState<WordData[]>([]);
   const [isWord, setWord] = useState("");
 
-  const [isStorage, setStorage] = useState<string[]>([])
+  const [isStorage, setStorage] = useState<string[]>(() => { 
+    const savedItem = localStorage.getItem("isStorage");
+    if (savedItem !== null) {
+    const parsedItem = JSON.parse(savedItem);
+    return parsedItem
+    } 
+    return []
+  }
+  )
+
+  function clearStorage() { 
+    // @ts-ignore
+    localStorage.clear("isStorage")
+    setStorage([])
+  }
 
   function handleStorage() { 
     setStorage(prev => [isWord,...prev])
@@ -53,9 +67,7 @@ export default function Searchbar() {
         // Convert the response to JSON and update the data state with the fetched data
         const data = await response.json();
         setData(data);
-
         handleStorage()
-
         setActive(true);
         setTimeout(() => setActive(false), 300);
 
@@ -65,8 +77,7 @@ export default function Searchbar() {
       } catch (error) {
         // Catch errors that occur during the API request
         console.log("error", error);
-        setError(true);
-        setTimeout(() => setError(false), 3000);
+     
       }
     }
   };
@@ -90,9 +101,8 @@ export default function Searchbar() {
     speechSynthesis.speak(speaking);
   };
 
-  // const handleRedError = isError ? null :
 
-  console.log(isStorage);
+
 
   return (
     <div className="dark:bg-black-primary dark:text-white h-screen p-6 md:px-10 lg:px-80 overflow-y-auto">
@@ -114,7 +124,7 @@ export default function Searchbar() {
         {isError == true && (
           <p className="text-red-primary">Whoops, can't be empty</p>
         )}
-        <SearchStorage isStorage={isStorage}/>
+        <SearchStorage isStorage={isStorage} clearStorage={clearStorage}/>
       </div>
       {isNotFound === true && isWord != "" ? ( // Renders No Definitions
         <div className="flex flex-col justify-center pt-32 dark:bg-black-primary">
