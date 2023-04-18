@@ -7,7 +7,7 @@ function App() {
 
   // States 
   const [isFontFamily, setFontFamily] = useState<string>("sans-serif");
-  const [isDarkModeTheme, setDarkModeTheme] = useState<boolean>(true);
+  const [isDarkModeTheme, setDarkModeTheme] = useState<boolean>(false);
 
   const darkModeHandle = isDarkModeTheme ? "dark" : "";
   function toggleDarkMode(prev: boolean):void {

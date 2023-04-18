@@ -93,7 +93,7 @@ export default function Navbar(props: Props) {
 
   return (
     <div className="flex justify-between py-6 px-6 md:px-10 lg:px-80 dark:bg-black-primary ">
-      <img alt="" src={Logo} className="h-8 w-8"  />
+      <img aria-label="Logo" src={Logo} className="h-8 w-8"  />
       <Font />
     </div>
   );

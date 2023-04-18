@@ -39,8 +39,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/dictionary-api-4GyfXJ7nR-](https://www.frontendmentor.io/solutions/dictionary-api-4GyfXJ7nR-)
+- Live Site URL: [https://playful-babka-6bb0fc.netlify.app/](https://playful-babka-6bb0fc.netlify.app/)
 
 
 ### Built with
@@ -161,8 +161,8 @@ As noted above, here is the summary of my biggest learning take ways.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Website - [coltensiemer.dev](https://coltensiemer.dev)
+- Frontend Mentor - [https://www.frontendmentor.io/profile/Coltensiemer](https://www.frontendmentor.io/profile/Coltensiemer)
 
 
 
